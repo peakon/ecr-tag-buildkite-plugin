@@ -12,7 +12,7 @@ Add the following to your `pipeline.yml`:
 steps:
   - key: tag-docker-image-ecr
     plugins:
-      - peakon/ecr-tag#v0.0.2:
+      - peakon/ecr-tag#v0.0.4:
           registry-id: ${AWS_ACCOUNT_ID}
           repository: ${BUILDKITE_PIPELINE_NAME}
           tag: ${BUILDKITE_COMMIT}
