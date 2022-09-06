@@ -28,7 +28,8 @@ function createTag() {
   local registryId="$1"
   local repositoryName="$2"
   local imageTag="$3"
-  local newImageTag="$4"
+  local newImageTag="$(echo "$4" | tr -cd '[:alnum:]._-')"
+
   local manifest
   local result
   local exit_code
