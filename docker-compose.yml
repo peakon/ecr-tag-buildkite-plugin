@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+  tests:
+    image: buildkite/plugin-tester
+    volumes:
+      - ".:/plugin:ro"
+  lint:
+    image: buildkite/plugin-linter
+    command: ['--id', 'peakon/ecr-tag']
+    volumes:
+      - ".:/plugin:ro"
+  shellcheck:
+    image: koalaman/shellcheck-alpine:latest
+    working_dir: "/plugin"
+    command: ["shellcheck", "lib/functions.bash", "hooks/command"]
+    volumes:
+      - ".:/plugin"

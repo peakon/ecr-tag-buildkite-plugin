@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+set -eEuo pipefail
+
+_source_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && cd .. && pwd )"
+# shellcheck disable=SC1090
+source "${_source_dir}/lib/functions.bash"
+
+if plugin_read_list_into_result BUILDKITE_PLUGIN_ECR_TAG_NEW_TAGS; then
+  for newTag in "${result[@]}" ; do
+    createTag "${BUILDKITE_PLUGIN_ECR_TAG_REGISTRY_ID}" "${BUILDKITE_PLUGIN_ECR_TAG_REPOSITORY}" "${BUILDKITE_PLUGIN_ECR_TAG_TAG}" "${newTag}"
+  done
+fi

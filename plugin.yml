@@ -1,0 +1,26 @@
+---
+name: AWS ECR Tag plugin
+description: Tag docker images in AWS ECR
+author: https://github.com/peakon
+requirements:
+- aws
+- jq
+configuration:
+  properties:
+    registry-id:
+      type: string
+    repository:
+      type: string
+    tag:
+      type: string
+    new-tags:
+      type: array
+      minimum: 1
+      items:
+        type: string
+  required:
+  - registry-id
+  - repository
+  - tag
+  - new-tags
+additionalProperties: false
