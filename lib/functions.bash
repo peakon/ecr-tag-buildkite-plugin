@@ -29,7 +29,7 @@ function createTag() {
   local repositoryName="$2"
   local imageTag="$3"
   local newImageTag
-  newImageTag="$(echo "$4" | tr -cd '[:alnum:]._-')"
+  newImageTag="$(echo -n "$4" | tr -s -c '[:alnum:][\_]' -)"
 
   local manifest
   local result
