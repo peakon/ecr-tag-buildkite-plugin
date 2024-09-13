@@ -8,7 +8,7 @@
 # You may use the Red Hat YAML extension in VS Code to validate this file.
 # yaml-language-server: $schema=https://security-api.appsec.inday.io/schemas/security_contact.json
 
-version: "1.0"
+version: '1.0'
 
 # Owners identify the individuals/groups who maintain this repo.
 owners:
@@ -16,14 +16,14 @@ owners:
     # We require at least one user to be specified to allow us to
     # map users into WoW. This might be the manager or tech lead
     # for this repo.
-    users:
-        - corp:CHANGEME
+  users:
+  - corp:fred.wynyk
     # Groups are optional, but allow you to point to existing AD/LDAP
     # user groups (CNs), prefixed with 'corp:'. This might be your
     # team's existing DL group or similar. You may remove 'groups' or
     # keep it empty if you are not using any groups.
-    groups:
-        - corp:CHANGEME
+  groups:
+  - corp:peakon.platform.team
 
 # Specify how you would like to be contacted if security finds an issue
 # in your code. You must provide at least one contact method. You may
@@ -31,16 +31,12 @@ owners:
 # 'false' for cases where you'd like to list a contact method for
 # completeness, but don't actually want us to send automated alerts to it.
 contact:
-    jira:
-        - project: CHANGEME
-          component: CHANGEME_OPTIONAL
-          notify: true
-    slack:
-        - channel: CHANGEME
-          notify: true
-    email:
-        - address: CHANGEME@workday.com
-          notify: false
+  slack:
+  - channel: peakon-platform-team
+    notify: true
+  email:
+  - address: peakon.platform.team@workday.com
+    notify: true
 
 # Which services does the code in this repo support?
 # Service names should match those in https://wolinks.com/servicenames.
@@ -52,10 +48,10 @@ contact:
 #    - NONE: For cases where the repo does not support prod services or fall
 #            into any of the other categories above.
 services:
-    - CHANGEME
+- peakon
 
 # Which service account(s) does your team use with artifactory? You may
 # this or leave a blank list if this repo does not store build artifacts
 # in artifactory.
 service_accounts:
-    - CHANGEME
+- peakon-buildadm
