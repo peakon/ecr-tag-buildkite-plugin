@@ -12,14 +12,15 @@ Add the following to your `pipeline.yml`:
 steps:
   - key: tag-docker-image-ecr
     plugins:
-      - peakon/ecr-tag#v0.0.4:
+      - peakon/ecr-tag#v0.0.5:
           registry-id: ${AWS_ACCOUNT_ID}
           repository: ${BUILDKITE_PIPELINE_NAME}
           tag: ${BUILDKITE_COMMIT}
           new-tags:
-          - ${BUILDKITE_BRANCH}-${BUILDKITE_COMMIT}
-          - ${BUILDKITE_BRANCH}
+            - ${BUILDKITE_BRANCH}-${BUILDKITE_COMMIT}
+            - ${BUILDKITE_BRANCH}
 ```
+
 ## Requirements
 
 - AWS cli, jq
@@ -27,12 +28,12 @@ steps:
 
 ## Configuration
 
-| property | description |
-| ---------|-------------|
+| property    | description                      |
+| ----------- | -------------------------------- |
 | registry-id | ECR registry ID (AWS account id) |
-| repository  | ECR repository name |
-| tag | Existing docker image tag |
-| new-tags | Array of tags to be created |
+| repository  | ECR repository name              |
+| tag         | Existing docker image tag        |
+| new-tags    | Array of tags to be created      |
 
 ### AWS profiles
 
@@ -46,7 +47,8 @@ You can specify a custom AWS profile to be used by AWS CLI
 To run the tests:
 
 ```shell
-docker-compose run --rm tests
+docker compose run --rm lint
+docker compose run --rm shellcheck
 ```
 
 ## Contributing
@@ -56,4 +58,4 @@ docker-compose run --rm tests
 3. Run shellcheck and plugin lint
 4. Commit and push your changes
 5. Send a pull request
->>>>>>> 8aa7528 (Initial commit)
+   > > > > > > > 8aa7528 (Initial commit)

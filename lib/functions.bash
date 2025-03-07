@@ -50,12 +50,10 @@ function createTag() {
   set -e
   if [ "${exit_code}" -ne 0 ]; then
     echo "${result}"
-    if [ "${exit_code}" -eq 255 ]; then # https://docs.aws.amazon.com/cli/latest/topic/return-codes.html
-      if [[ "${result}" =~ .*"ImageAlreadyExistsException".* ]]; then
+    if [[ "${result}" =~ .*"ImageAlreadyExistsException".* ]]; then
         echo "Image tag ${newImageTag} already exist. Skipping..."
-      fi
     else
-      exit "${exit_code}"
+      exit "${exit_code}" # https://docs.aws.amazon.com/cli/latest/topic/return-codes.html
     fi
   else
     echo "Successfully retagged image: ${newImageTag}"
